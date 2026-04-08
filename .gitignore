@@ -1,0 +1,8 @@
+# R
+*.rds
+*.rda
+*.RData
+*.Rhistory
+
+# Logs
+*.log
