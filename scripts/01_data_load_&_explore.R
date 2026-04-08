@@ -63,7 +63,7 @@ if (!"percent.mt" %in% colnames(seu@meta.data)) {
 # Visualise the three main QC metrics across samples before any filtering
 # Save to results/figures/ for the README
 
-dir.create("results/figures", recursive = TRUE, showWarnings = FALSE)
+dir.create("figures", recursive = TRUE, showWarnings = FALSE)
 
 p_qc <- VlnPlot(
   seu,
@@ -73,7 +73,7 @@ p_qc <- VlnPlot(
   ncol = 3
 )
 
-  ggsave("results/figures/01_qc_violin_raw.png", p_qc, width = 14, height = 5, dpi = 150)
+  ggsave("figures/01_qc_violin_raw.png", p_qc, width = 14, height = 5, dpi = 150)
 
 # --- 6. Save a checkpoint -----------------------------------------------------
 saveRDS(seu, "data/seurat_checkpoint_01.rds")
