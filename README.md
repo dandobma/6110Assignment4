@@ -140,3 +140,50 @@ Several limitations of this study should be acknowledged. First, the use of log-
 
 ---
 
+## References
+
+Aran, D., Looney, A. P., Liu, L., Wu, E., Fong, V., Hsu, A., Chak, S., Naikawadi, R. P., Wolters, P. J., Bhatt, A. S., Bhatt, D. L., & Bhatt, D. (2019). Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage. *Nature Immunology*, *20*(2), 163–172.
+
+Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B*, *57*(1), 289–300.
+
+Büttner, M., Ostner, J., Müller, C. L., Theis, F. J., & Schubert, B. (2021). scCODA is a Bayesian model for compositional single-cell data analysis. *Nature Communications*, *12*(1), 6876.
+
+Chen, M., Xu, R., Rai, K., Bhatt, D. L., Bhatt, A. S., & Bhatt, D. (2024). Single-cell transcriptomic atlas of the murine nasal mucosa during influenza A virus infection. *bioRxiv*.
+
+Dann, E., Henderson, N. C., Teichmann, S. A., Morgan, M. D., & Marioni, J. C. (2022). Differential abundance testing on single-cell data using k-nearest neighbor graphs. *Nature Biotechnology*, *40*(2), 245–253.
+
+Guilliams, M., De Kleer, I., Henri, S., Post, S., Vanhoutte, L., De Prijck, S., Deswarte, K., Malissen, B., Hammad, H., & Lambrecht, B. N. (2013). Alveolar macrophages develop from fetal monocytes that differentiate into long-lived cells in the first week of life via GM-CSF. *Journal of Experimental Medicine*, *210*(10), 1977–1992.
+
+Guilliams, M., Ginhoux, F., Jakubzick, C., Naik, S. H., Onai, N., Schraml, B. U., Segura, E., Tussiwand, R., & Yona, S. (2014). Dendritic cells, monocytes and macrophages: A unified nomenclature based on ontogeny. *Nature Reviews Immunology*, *14*(8), 571–578.
+
+Hafemeister, C., & Satija, R. (2019). Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression. *Genome Biology*, *20*(1), 296.
+
+Hao, Y., Hao, S., Andersen-Nissen, E., Mauck, W. M., Zheng, S., Butler, A., Lee, M. J., Wilk, A. J., Darby, C., Zager, M., Hoffman, P., Stoeckius, M., Papalexi, E., Mimitou, E. P., Jain, J., Srivastava, A., Stuart, T., Fleming, L. M., Yeung, B., … Satija, R. (2021). Integrated analysis of multimodal single-cell data. *Cell*, *184*(13), 3573–3587.
+
+Hashimoto, D., Chow, A., Noizat, C., Teo, P., Beasley, M. B., Leboeuf, M., Becker, C. D., See, P., Price, J., Lucas, D., Greter, M., Mortha, A., Boyer, S. W., Forsberg, E. C., Tanaka, M., van Rooijen, N., García-Sastre, A., Stanley, E. R., Ginhoux, F., … Merad, M. (2013). Tissue-resident macrophages self-maintain locally throughout adult life with minimal contribution from circulating monocytes. *Immunity*, *38*(4), 792–804.
+
+Iwasaki, A., & Pillai, P. S. (2014). Innate immunity to influenza virus infection. *Nature Reviews Immunology*, *14*(5), 315–328.
+
+Jia, S., He, X., Xiao, Z., Wang, Y., Pan, Y., Yin, S., Sun, J., Chen, J., Lu, Y., & Jin, J. (2024). Dynamic mRNA network profiles in macrophages challenged with lipopolysaccharide. Aging, 16(10), 8919–8939.
+
+Jovic, D., Liang, X., Zeng, H., Lin, L., Xu, F., & Luo, Y. (2022). Single-cell RNA sequencing technologies and applications: A brief overview. *Clinical and Translational Medicine*, *12*(3), e694.
+
+Korsunsky, I., Millard, N., Fan, J., Slowikowski, K., Zhang, F., Wei, K., Baglaenko, Y., Brenner, M., Loh, P. R., & Raychaudhuri, S. (2019). Fast, sensitive and accurate integration of single-cell data with Harmony. *Nature Methods*, *16*(12), 1289–1296.
+
+Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. *Genome Biology*, *15*(12), 550.
+
+McInnes, L., Healy, J., & Melville, J. (2018). UMAP: Uniform manifold approximation and projection for dimension reduction. *arXiv*.
+
+Misharin, A. V., Morales-Nebreda, L., Reyfman, P. A., Cuda, C. M., Walter, J. M., McQuattie-Pimentel, A. C., Chen, C. I., Anekalla, K. R., Joshi, N., Williams, K. J. N., Abdala-Valencia, H., Yacoub, T. J., Chi, M., Chiu, S., Gonzalez-Gonzalez, F. J., Gates, K., Lam, A. P., Nicholson, T. T., Homan, P. J., … Bhatt, A. S. (2017). Monocyte-derived alveolar macrophages drive lung fibrosis and persist in the lung over the life span. *Journal of Experimental Medicine*, *214*(8), 2387–2404. 
+
+Perng, Y. C., & Bhatt, D. L. (2019). ISG15 in antiviral immunity and beyond. *Nature Reviews Microbiology*, *17*(6), 338–353.
+
+Piccirillo, C. A., Bjur, E., Topisirovic, I., Sonenberg, N., & Bhatt, D. L. (2014). Translational control of immune responses: From transcripts to translatomes. *Nature Immunology*, *15*(6), 503–511.
+
+R Core Team. (2024). *R: A language and environment for statistical computing*. R Foundation for Statistical Computing.
+
+Ruiz Tejada Segura, M. L., Abou Moussa, E., Garabello, E., Nakahara, T. S., Makhlouf, M., Mathew, L. S., Wang, L., Valle, F., Huang, S. S. Y., Mainland, J. D., Caselle, M., Osella, M., Lorenz, S., Reisert, J., Logan, D. W., Malnic, B., Scialdone, A., & Saraiva, L. R. (2022). A 3D transcriptomics atlas of the mouse nose sheds light on the anatomical logic of smell. Cell Reports, 38(12), 110547.
+
+Street, K., Risso, D., Fletcher, R. B., Das, D., Ngai, J., Bhatt, D., Bhatt, A. S., & Bhatt, D. (2018). Slingshot: Cell lineage and pseudotime inference for single-cell transcriptomics. *BMC Genomics*, *19*(1), 477.
+
+Yu, G., Wang, L. G., Han, Y., & He, Q. Y. (2012). clusterProfiler: An R package for comparing biological themes among gene clusters. *OMICS: A Journal of Integrative Biology*, *16*(5), 284–287.
