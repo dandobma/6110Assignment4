@@ -68,57 +68,57 @@ Trajectory analysis was performed on myeloid cells (macrophages, monocytes, dend
 
 A total of 156,137 cells passed quality control filtering and were retained for analysis. The UMAP of the full dataset, coloured by annotated cell type, reveals 36 distinct clusters spanning a broad range of cell lineages expected in the nasal mucosa (Figure 1). Immune cell populations including macrophages, monocytes, neutrophils, B cells, T cells, NK cells, and dendritic cells cluster together in the upper-left region of the UMAP. A large central region is occupied by olfactory sensory neurons, which represent the most abundant cell type in the dataset (37,258 cells), consistent with the inclusion of olfactory mucosa tissue. Stromal and structural cell types including fibroblasts, endothelial cells, chondrocytes, osteoblasts, and smooth muscle cells occupy the lower portion of the UMAP. Glandular epithelial populations including LNG secretory cells, serous acinar cells, and goblet cells cluster in the lower-left, reflecting the LNG tissue contribution. The spatial organization of cell types within the UMAP is biologically coherent and consistent with the known anatomy of the three tissue compartments included in this dataset.
 
-![Figure 1](results/figures/04_umap_annotated.png)
+![Figure 1](figures/04_umap_annotated.png)
 
 **Figure 1:** UMAP of all 156,137 cells coloured by annotated cell type. Annotation was performed by combining SingleR automated labelling with two mouse reference datasets (ImmGenData and MouseRNAseqData) and manual marker gene validation. Thirty-six clusters were identified at resolution 0.5. Cell types are indicated by colour and labeled directly on the plot.
 
 Feature plots of canonical lineage marker genes confirm the accuracy of cell type annotation (Figure 2). *Cd3d* expression is concentrated in a small discrete cluster corresponding to T cells within the immune compartment. *Cd19* marks the B cell cluster in the upper-centre of the UMAP. *Cd68*, a pan-macrophage marker, is expressed in the macrophage cluster in the left immune region. *Epcam* shows broad expression across multiple epithelial clusters spanning the central and lower UMAP. *Col1a1* is restricted to the fibroblast cluster in the lower stromal region. *S100a8* marks a tight cluster of neutrophils in the upper-left immune compartment. The spatial concordance between marker gene expression and cluster annotation supports the reliability of the annotated cell identities.
 
-![Figure 2](results/figures/04_feature_plots_markers.png)
+![Figure 2](figures/04_feature_plots_markers.png)
 
 **Figure 2:** Feature plots showing normalized expression of six canonical cell type marker genes on the UMAP embedding. Expression level is indicated by colour intensity (purple = high). Marker genes shown are *Cd3d* (T cells), *Cd19* (B cells), *Cd68* (macrophages), *Epcam* (epithelial cells), *Col1a1* (fibroblasts), and *S100a8* (neutrophils).
 
 Pseudobulk differential expression analysis comparing macrophages in the RM tissue between Naive and D05 timepoints identified 779 significantly differentially expressed genes (adjusted p-value < 0.05, |log₂FC| ≥ 1), of which 100 were upregulated and 679 were downregulated at D05 relative to Naive (Figure 3). The most significantly downregulated genes included multiple ribosomal protein genes (*Rps21*, *Rps27*, *Rpl39*, *Rpl37a*, *Rps28*, *Rpl34*) and immediate early response genes (*Fos*, *Ier2*, *Dusp1*, *Egr1*, *Jund*). Among the most significantly upregulated genes were *Ly6c2*, a marker of inflammatory monocyte-derived cells, *Isg15*, an interferon-stimulated gene with established antiviral function, and *Gm42418*, a long non-coding RNA. The volcano plot illustrates the asymmetry of the response, with the downregulated signal being quantitatively dominant but the upregulated genes including highly biologically relevant antiviral effectors.
 
-![Figure 3](results/figures/05_volcano_macrophages_RM.png)
+![Figure 3](figures/05_volcano_macrophages_RM.png)
 
 **Figure 3:** Volcano plot of pseudobulk differential expression in RM macrophages comparing D05 to Naive (n = 3 biological replicates per condition). The x-axis shows log₂ fold change and the y-axis shows −log₁₀ adjusted p-value. Red points indicate genes significantly upregulated at D05 (adjusted p-value < 0.05, log₂FC > 1); blue points indicate significantly downregulated genes (log₂FC < −1). Selected genes with |log₂FC| > 2 are labeled. Dashed lines indicate significance thresholds. Differential expression was performed using DESeq2 with the Benjamini–Hochberg multiple testing correction.
 
 Gene set enrichment analysis of RM macrophages at D05 versus Naive revealed that all significantly enriched GO Biological Process terms were in the suppressed direction, with no pathways significantly enriched among upregulated genes at the GO:BP level (Figure 4). The top enriched terms included cytoplasmic translation (NES = −1.51, adjusted p = 2.51 × 10⁻⁷), translation (NES = −1.48, adjusted p = 2.51 × 10⁻⁷), ribonucleoprotein complex biogenesis (NES = −1.43, adjusted p = 1.42 × 10⁻⁴), and ribosome biogenesis (NES = −1.44, adjusted p = 1.56 × 10⁻³). All enriched terms were related to translational machinery and ribosomal biology. The GSEA enrichment curve for the top-ranked term, cytoplasmic translation, shows a steadily declining running enrichment score that reaches its minimum near the end of the ranked gene list, confirming that ribosomal and translation genes are concentrated among the most strongly downregulated genes at D05 (Figure 5).
 
-![Figure 4](results/figures/05_gsea_dotplot_macrophages_RM.png)
+![Figure 4](figures/05_gsea_dotplot_macrophages_RM.png)
 
 **Figure 4:** GSEA dot plot of GO Biological Process terms enriched in RM macrophages at D05 versus Naive. All significantly enriched terms (adjusted p-value < 0.05) fall in the suppressed category, indicating downregulation of these pathways at D05. The x-axis represents the gene ratio (proportion of genes in the leading edge), dot size indicates the number of genes, and colour indicates the adjusted p-value. Analysis was performed using clusterProfiler with the org.Mm.eg.db mouse annotation database.
 
-![Figure 5](results/figures/05_gsea_enrichment_plot.png)
+![Figure 5](figures/05_gsea_enrichment_plot.png)
 
 **Figure 5:** GSEA enrichment plot for the top-ranked GO Biological Process term, cytoplasmic translation, in RM macrophages at D05 versus Naive. The running enrichment score (green line) declines continuously across the ranked gene list, with the minimum enrichment score occurring near the right end of the distribution. Tick marks indicate positions of cytoplasmic translation gene set members in the ranked list. The colour bar at the bottom indicates the ranking metric (red = upregulated at D05, blue = downregulated).
 
 Cell type composition analysis of the RM tissue across all five timepoints reveals dynamic changes in immune cell proportions over the course of infection (Figure 6). The stacked bar plot shows that the relative abundance of immune cell types increases substantially from Naive to D05 and D08, with a corresponding relative decrease in structural and epithelial populations. The overall compositional shift is most pronounced at D05 and D08, consistent with the experimental design's designation of these timepoints as periods of peak myeloid recruitment and T cell infiltration, respectively.
 
-![Figure 6](results/figures/06_composition_stacked_RM.png)
+![Figure 6](figures/06_composition_stacked_RM.png)
 
 **Figure 6:** Stacked bar plot showing mean cell type proportions in the RM tissue at each of the five timepoints (Naive, D02, D05, D08, D14). Each bar represents the mean proportion across three biological replicates. Cell types are indicated by colour according to the legend. Proportions were calculated relative to total RM cells per replicate.
 
 The dynamics of individual immune cell populations over the course of infection are shown in Figure 7. Monocytes exhibit a pronounced increase from Naive through D05 and peak at D08, before declining toward D14. NK cells show a similar trajectory, peaking at D08. In contrast, macrophages are most abundant in the Naive state and decline through D05 and D08, with partial recovery at D14. Neutrophils increase modestly from D02 onward. B cells and T cells, which are adaptive immune cell types, remain at low proportions across all timepoints, consistent with the relatively early timepoints captured by this dataset.
 
-![Figure 7](results/figures/06_immune_proportions_RM.png)
+![Figure 7](figures/06_immune_proportions_RM.png)
 
 **Figure 7:** Line plot showing mean proportions (± standard error) of eight immune cell types in the RM tissue across five timepoints. Proportions were calculated per biological replicate (n = 3) and summarized as mean ± SE. Each line represents one cell type as indicated by colour.
 
 The proportion of macrophages per biological replicate across all five timepoints is shown in Figure 8. While the mean trend (dashed line) suggests a decline in macrophage proportion from Naive through D05–D08 followed by partial recovery at D14, there is substantial inter-replicate variability. A linear model of macrophage proportion as a function of timepoint was not statistically significant (p = 0.945, R² < 0.001), reflecting the non-linear nature of the response and the limited statistical power of three biological replicates per condition.
 
-![Figure 8](results/figures/06_macrophage_proportion_RM.png)
+![Figure 8](figures/06_macrophage_proportion_RM.png)
 
 **Figure 8:** Macrophage proportion per biological replicate in RM tissue across five timepoints. Each point represents one replicate, coloured by mouse identity. The dashed black line indicates the mean proportion across replicates at each timepoint. Proportions are expressed as a fraction of total RM cells per replicate.
 
 To investigate whether monocytes differentiate into macrophages during the course of influenza infection, Slingshot trajectory analysis was performed on the myeloid compartment of the RM tissue. The UMAP of myeloid cells coloured by pseudotime shows a continuous gradient from low pseudotime (dark purple) in the monocyte region to high pseudotime (orange/yellow) in the macrophage and neutrophil regions (Figure 9). The pseudotime gradient transitions smoothly across the monocyte-macrophage boundary, indicating a transcriptional continuum rather than a discrete boundary between the two cell types. The neutrophil cluster on the right side of the UMAP shows a separate pseudotime progression reflecting the independent granulocyte maturation trajectory. Slingshot identified three lineages, all originating from the monocyte cluster: Lineage 1 (Monocytes → Dendritic cells → Immature neutrophils), Lineage 2 (Monocytes → Dendritic cells → Macrophages), and Lineage 3 (Monocytes → Dendritic cells → Neutrophils). The inferred trajectories, overlaid as black curves on the cell type UMAP, confirm the branched myeloid differentiation structure with dendritic cells occupying an intermediate transcriptional state (Figure 10).
 
-![Figure 9](results/figures/07_umap_pseudotime.png)
+![Figure 9](figures/07_umap_pseudotime.png)
 
 **Figure 9:** UMAP of myeloid cells from RM tissue coloured by Slingshot pseudotime. Pseudotime was computed using monocytes as the root cluster. Colour indicates pseudotime value (dark purple = low, yellow = high) using the magma colour scale. Myeloid cells comprise macrophages, monocytes, dendritic cells, neutrophils, and immature neutrophils (n = 14,037 cells).
 
-![Figure 10](results/figures/07_trajectories.png)
+![Figure 10](figures/07_trajectories.png)
 
 **Figure 10:** Slingshot trajectory curves overlaid on the myeloid cell UMAP coloured by cell type. Black curves indicate the three inferred differentiation lineages: Lineage 1 (Monocytes → Dendritic cells → Immature neutrophils), Lineage 2 (Monocytes → Dendritic cells → Macrophages), and Lineage 3 (Monocytes → Dendritic cells → Neutrophils). All lineages originate from the monocyte cluster.
 
