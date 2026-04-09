@@ -43,13 +43,10 @@ ggsave("figures/03_elbow_plot.png", p_elbow,
        width = 7, height = 5, dpi = 150, bg = "white")
 
 # Visually inspect the elbow plot before proceeding.
-# A common choice is 30 PCs for large heterogeneous datasets.
-# We use 30 below — adjust if your elbow is clearly earlier (e.g. 20).
 N_PCS <- 30
 
 # --- 3. Check for batch effects before integration ----------------------------
-# Run a preliminary UMAP on PCA (no correction) to see if cells cluster
-# by sample/tissue rather than by cell type — if so, Harmony is needed.
+# Run a preliminary UMAP on PCA (no correction) to see if cells cluster by sample/tissue rather than by cell type
 
 seu <- RunUMAP(seu, dims = 1:N_PCS, reduction = "pca",
                reduction.name = "umap.uncorrected", verbose = FALSE)
