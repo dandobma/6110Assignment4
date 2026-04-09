@@ -64,7 +64,6 @@ print(singler_comparison)
 write.csv(singler_comparison, "results/singler_labels.csv", row.names = FALSE)
 
 # Diagnostic heatmap: shows confidence of each label assignment
-# Low-confidence assignments (pale colours) need extra manual scrutiny
 png("figures/04_singler_heatmap_immgen.png",
     width = 1400, height = 900, res = 120)
 plotScoreHeatmap(singler_immgen)
