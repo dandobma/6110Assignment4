@@ -78,5 +78,5 @@ p_qc <- VlnPlot(
 # --- 6. Save a checkpoint -----------------------------------------------------
 saveRDS(seu, "data/seurat_checkpoint_01.rds")
 
-cat("\nStep 1 complete. Check the metadata column names above and update\n")
-cat("'tissue', 'timepoint', and 'sample' references in subsequent scripts.\n")
+cat("\nStep 1 complete.")
+

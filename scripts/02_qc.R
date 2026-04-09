@@ -89,5 +89,4 @@ seu_filtered@meta.data$replicate <- ifelse(
 # --- 7. Save checkpoint -------------------------------------------------------
 saveRDS(seu_filtered, "data/seurat_checkpoint_02.rds")
 
-cat("\nScript 02 complete. Check figures in results/figures/\n")
-cat("Review threshold choices and update if needed before proceeding.\n")
+cat("\nScript 02 complete."))
