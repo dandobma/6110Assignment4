@@ -39,7 +39,7 @@ table(mac_rm$time, mac_rm$mouse_id)
 
 # --- 2. Create pseudobulk counts ----------------------------------------------
 # Sum raw counts across all cells per sample (mouse_id × timepoint)
-# This converts single-cell data into bulk-like counts for DESeq2
+# Converts single-cell data into bulk-like counts for DESeq2
 
 # Extract raw count matrix
 counts_mat <- GetAssayData(mac_rm, assay = "RNA", layer = "counts")
@@ -139,7 +139,7 @@ ggsave("figures/05_volcano_macrophages_RM.png",
 
 # --- 7. Prepare ranked gene list for GSEA ------------------------------------
 # Rank all genes by their log2FC × -log10(pvalue) score
-# This preserves direction and significance simultaneously
+# Preserves direction and significance simultaneously
 
 gsea_input <- res_df %>%
   filter(!is.na(log2FoldChange), !is.na(pvalue)) %>%
