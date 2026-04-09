@@ -4,10 +4,10 @@
 # =============================================================================
 
 # --- Install packages (run once, then comment out) ---------------------------
- BiocManager::install("DESeq2")
- BiocManager::install("clusterProfiler")
- BiocManager::install("org.Mm.eg.db")
- install.packages("ggrepel")
+# BiocManager::install("DESeq2")
+# BiocManager::install("clusterProfiler")
+# BiocManager::install("org.Mm.eg.db")
+# install.packages("ggrepel")
 
 library(Seurat)
 library(tidyverse)
