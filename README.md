@@ -49,3 +49,17 @@ Automated annotation was performed using SingleR (Aran et al., 2019) with two re
 ### Differential Expression Analysis
 
 Pseudobulk differential expression analysis was performed on macrophages from the RM tissue comparing Naive and D05 timepoints using DESeq2 (Love et al., 2014). Cells with unassigned biological replicates (mouse_id = "") were excluded, as replicate identity is required for pseudobulk aggregation. Raw counts were summed across all cells within each sample (mouse_id × timepoint combination) using `rowSums()`, yielding six pseudobulk samples (three Naive, three D05). Genes with fewer than 10 counts in fewer than two samples were excluded prior to model fitting. A Wald test was performed using the design formula `~ condition`, with Naive as the reference level. Genes with an adjusted p-value < 0.05 and |log₂ fold change| ≥ 1 were considered significantly differentially expressed. Multiple testing correction was applied using the Benjamini-Hochberg procedure (Benjamini & Hochberg, 1995).
+
+### Gene Set Enrichment Analysis
+
+Gene set enrichment analysis (GSEA) was performed using the `gseGO()` function from clusterProfiler (Yu et al., 2012) against Gene Ontology Biological Process (GO:BP) terms. Genes were ranked by a composite score of log₂ fold change × −log₁₀(p-value), preserving both effect size and statistical significance. Gene symbols were converted to Entrez IDs using `bitr()` with the `org.Mm.eg.db` annotation database. GSEA was run with `minGSSize = 15`, `maxGSSize = 500`, and `pvalueCutoff = 0.05`. Enrichment plots were generated using `gseaplot2()` from the enrichplot package.
+
+### Cell Composition Analysis
+
+Cell type proportions were calculated for the RM tissue across all five timepoints by aggregating cell counts per cell type per biological replicate and computing proportions relative to total RM cells per replicate. Immune cell proportions over time were visualized as a line plot with mean ± standard error. Macrophage proportions were modeled as a function of timepoint using a linear model (`lm(proportion ~ time_num)`), where timepoints were encoded numerically (0, 2, 5, 8, 14 dpi). Cell type composition was also compared across all three tissue types.
+
+### Trajectory Analysis
+
+Trajectory analysis was performed on myeloid cells (macrophages, monocytes, dendritic cells, neutrophils, and immature neutrophils) from the RM tissue using Slingshot (Street et al., 2018). Myeloid cells were re-normalized and re-clustered independently of the full dataset using log-normalization, 2,000 variable features, and UMAP with 15 principal components. Slingshot was applied to the UMAP embedding using cell type annotations as cluster labels and monocytes as the designated root cluster, based on the biological hypothesis that infiltrating monocytes differentiate into macrophages during infection resolution. Pseudotime values were extracted using `slingPseudotime()` and visualized on the UMAP and as violin plots stratified by timepoint.
+
+---
