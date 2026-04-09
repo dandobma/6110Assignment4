@@ -17,3 +17,35 @@ Computational analysis was performed using Seurat for clustering and dimensional
 ---
 
 # Methods
+
+### Computational Environment
+
+All analyses were performed in R (version 4.4.x; R Core Team, 2024) within RStudio on Windows 11. All scripts are provided in the `scripts/` directory of this repository.
+
+### Data Acquisition
+
+A pre-processed Seurat object containing scRNA-seq data and metadata from Chen et al. (2024) was downloaded directly from a public repository hosted by the authors. The dataset encompasses 156,572 cells from three nasal tissue compartments (RM, OM, LNG) across five timepoints (naive, D02, D05, D08, D14) with three biological replicates per condition (n = 3 mice). The original data were generated using droplet-based single-cell sequencing and aligned to the mouse genome.
+
+### Quality Control
+
+Quality control metrics were assessed using the Seurat package (Hao et al., 2021). Mitochondrial gene content was calculated using `PercentageFeatureSet()` with the pattern `^mt-`, reflecting the lowercase mitochondrial gene naming convention of the mouse (*Mus musculus*) genome. Cells were retained based on the following thresholds: number of detected features (nFeature_RNA) between 200 and 6,000; total UMI counts (nCount_RNA) below 15,000; and mitochondrial fraction (percent.mt) below 15%. These thresholds were selected based on inspection of empirical quantile distributions: the 99th percentile of nFeature_RNA was 3,438, of nCount_RNA was 6,203, and of percent.mt was 13.5%, indicating the data had been substantially pre-filtered by the original authors. The applied thresholds therefore served as conservative safeguards to remove residual low-quality cells. A total of 435 cells (0.28%) were removed, yielding 156,137 cells for downstream analysis.
+
+### Normalization
+
+Data normalization was performed using `NormalizeData()` with default log-normalization parameters, followed by identification of the top 3,000 highly variable features using `FindVariableFeatures()`. Data were scaled and mitochondrial fraction was regressed out using `ScaleData()` with `vars.to.regress = "percent.mt"`. SCTransform (Hafemeister & Satija, 2019) was attempted but was not feasible due to memory constraints on a dataset of this size; log-normalization was used as the alternative.
+
+### Dimensionality Reduction and Batch Correction
+
+Principal component analysis (PCA) was performed using `RunPCA()`. Thirty principal components were retained based on inspection of the elbow plot, which showed a gradual decline in variance explained beyond PC 15–20 with no clear inflection point, making 30 PCs a conservative and well-supported choice. Batch correction was applied using Harmony (Korsunsky et al., 2019), integrating across sample identity (`orig.ident`) to remove per-sample technical variation while preserving biological signal. Uniform Manifold Approximation and Projection (UMAP) was computed on the Harmony-corrected embedding using `RunUMAP()` with 30 dimensions (McInnes et al., 2018).
+
+### Clustering
+
+Shared nearest-neighbour graphs were constructed using `FindNeighbors()` on the Harmony embedding with 30 dimensions. Clustering was performed at resolutions 0.3, 0.5, and 0.8 using `FindClusters()`. Resolution 0.5, yielding 36 clusters, was selected as the optimal balance between cluster granularity and biological interpretability for a dataset comprising three anatomically diverse tissue types.
+
+### Cell Type Annotation
+
+Automated annotation was performed using SingleR (Aran et al., 2019) with two reference datasets: ImmGenData for immune cell types and MouseRNAseqData for broader cell type coverage, both accessed via the celldex package. Annotation was performed at the cluster level by passing `clusters = Idents(seu)` to `SingleR()`. Manual annotation was performed in parallel using marker genes identified by `FindAllMarkers()` with a Wilcoxon rank-sum test (`min.pct = 0.25`, `logfc.threshold = 0.5`, `max.cells.per.ident = 500`). Canonical marker genes used for manual annotation included: *Cd3d* and *Cd3e* (T cells), *Cd19* and *Iglc2* (B cells), *Cd68* and *Trem2* (macrophages), *Ly6g* and *Cxcr2* (neutrophils), *Klrb1c* and *Ncr1* (NK cells), *Flt3* and *Cd209a* (dendritic cells), *Epcam* and *Krt15* (epithelial cells), *Col1a1* and *Apod* (fibroblasts), *Emcn* and *Ptprb* (endothelial cells), *Omp* and *Nrn1l* (olfactory neurons), *Neurog1* and *Neurod1* (neuronal progenitors), *Mpz* and *Gpr37l1* (Schwann cells), *Tmem212* and *Sntn* (ciliated epithelial cells), *Trpm5* and *Gnat3* (tuft cells), *Bglap* and *Ibsp* (osteoblasts), and *Col2a1* and *Cytl1* (chondrocytes). Final cluster labels were assigned by reconciling SingleR predictions with manual marker gene evidence.
+
+### Differential Expression Analysis
+
+Pseudobulk differential expression analysis was performed on macrophages from the RM tissue comparing Naive and D05 timepoints using DESeq2 (Love et al., 2014). Cells with unassigned biological replicates (mouse_id = "") were excluded, as replicate identity is required for pseudobulk aggregation. Raw counts were summed across all cells within each sample (mouse_id × timepoint combination) using `rowSums()`, yielding six pseudobulk samples (three Naive, three D05). Genes with fewer than 10 counts in fewer than two samples were excluded prior to model fitting. A Wald test was performed using the design formula `~ condition`, with Naive as the reference level. Genes with an adjusted p-value < 0.05 and |log₂ fold change| ≥ 1 were considered significantly differentially expressed. Multiple testing correction was applied using the Benjamini-Hochberg procedure (Benjamini & Hochberg, 1995).
